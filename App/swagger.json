@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "POSBackend API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/usuario": {
+      "get": {
+        "summary": "Usuario controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/cliente": {
+      "get": {
+        "summary": "Cliente controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/productos": {
+      "get": {
+        "summary": "Productos controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/ventas": {
+      "get": {
+        "summary": "Ventas controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/procesos": {
+      "get": {
+        "summary": "Procesos controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/provedores": {
+      "get": {
+        "summary": "Provedores controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/configuraciones": {
+      "get": {
+        "summary": "Configuraciones controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    },
+    "/sucursal": {
+      "get": {
+        "summary": "Sucursal controller",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"}
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY"
+      }
+    }
+  }
+}
