@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
 
-class LoginDTO(Schema):
+class LoginModel(Schema):
     usuario = fields.Str(required=True)
-    contrasena = fields.Str(required=True)
+    clave = fields.Str(required=True, load_only=True)

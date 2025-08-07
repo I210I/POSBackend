@@ -1,11 +1,8 @@
-from datetime import datetime
+from models import db
 
-class Categoria:
-    def __init__(self, id_categoria: int = None, descripcion_categoria: str = None, estado: bool = None, fecha_creacion: datetime = None):
-        self.id_categoria = id_categoria
-        self.descripcion_categoria = descripcion_categoria
-        self.estado = estado
-        self.fecha_creacion = fecha_creacion
-
-    def __repr__(self):
-        return f'<Categoria {self.id_categoria} {self.descripcion_categoria}>'
+class Categoria(db.Model):
+    __tablename__ = 'categoria'
+    id_categoria = db.Column(db.Integer, primary_key=True)
+    descripcion_categoria = db.Column(db.String(15))
+    estado = db.Column(db.Boolean, default=True)
+    fecha_creacion = db.Column(db.DateTime)

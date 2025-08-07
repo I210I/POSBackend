@@ -1,23 +1,27 @@
+
+from App.models import db
+from sqlalchemy.orm import relationship
 from datetime import datetime
 
-class Producto:
-    def __init__(self, id_producto: int = None, codigo: str = None, nombre: str = None, descripcion: str = None,
-                 categoria: int = None, precio_compra: float = None, precio_venta: float = None,
-                 mayoreo: bool = None, pieza_mayoreo: int = None, precio_mayoreo: float = None,
-                 stock: float = None, estado: bool = None, fecha_creacion: datetime = None):
-        self.id_producto = id_producto
-        self.codigo = codigo
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.categoria = categoria
-        self.precio_compra = precio_compra
-        self.precio_venta = precio_venta
-        self.mayoreo = mayoreo
-        self.pieza_mayoreo = pieza_mayoreo
-        self.precio_mayoreo = precio_mayoreo
-        self.stock = stock
-        self.estado = estado
-        self.fecha_creacion = fecha_creacion
+class Producto(db.Model):
+    __tablename__ = 'producto'
+
+    id_producto = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    codigo = db.Column(db.String(50), unique=True, nullable=False)
+    nombre = db.Column(db.String(100), nullable=False)
+    descripcion = db.Column(db.String(255))
+    categoria = db.Column(db.Integer, db.ForeignKey('categoria.id_categoria'), nullable=False, index=True)
+    precio_compra = db.Column(db.Numeric(10, 2), nullable=False)
+    precio_venta = db.Column(db.Numeric(10, 2), nullable=False)
+    mayoreo = db.Column(db.Boolean, default=False)
+    pieza_mayoreo = db.Column(db.Integer, default=0)
+    precio_mayoreo = db.Column(db.Numeric(10, 2), default=0)
+    stock = db.Column(db.Integer, default=0)
+    estado = db.Column(db.Boolean, default=True)
+    fecha_creacion = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relación con DetalleCompra
+    detalles_compra = relationship('DetalleCompra', back_populates='producto', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f'<Producto {self.id_producto} {self.nombre}>'

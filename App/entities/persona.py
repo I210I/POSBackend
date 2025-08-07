@@ -1,19 +1,14 @@
-from datetime import datetime
+from models import db
 
-class Persona:
-    def __init__(self, id_persona: int = None, documento: str = None, nombre: str = None, direccion: str = None,
-                 telefono: str = None, clave: str = None, tipo_persona: int = None, estado: bool = None,
-                 usuario: str = None, fecha_creacion: datetime = None):
-        self.id_persona = id_persona
-        self.documento = documento
-        self.nombre = nombre
-        self.direccion = direccion
-        self.telefono = telefono
-        self.clave = clave
-        self.tipo_persona = tipo_persona
-        self.estado = estado
-        self.usuario = usuario
-        self.fecha_creacion = fecha_creacion
-
-    def __repr__(self):
-        return f'<Persona {self.id_persona} {self.nombre}>'
+class Persona(db.Model):
+    __tablename__ = 'persona'
+    id_persona = db.Column(db.Integer, primary_key=True)
+    documento = db.Column(db.String(15))
+    nombre = db.Column(db.String(50))
+    direccion = db.Column(db.String(50))
+    telefono = db.Column(db.String(50))
+    clave = db.Column(db.String(50))
+    id_tipo_persona = db.Column(db.Integer, db.ForeignKey('tipo_persona.id_tipo_persona'))
+    estado = db.Column(db.Boolean, default=True)
+    fecha_creacion = db.Column(db.DateTime)
+    usuario = db.Column(db.String(15))
