@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify
 from flask_swagger_ui import get_swaggerui_blueprint
 from dotenv import load_dotenv
@@ -9,7 +8,7 @@ from controllers.AutenticacionController import autenticacion_bp
 from controllers.ClienteController import cliente_bp
 from controllers.ProductosController import productos_bp
 from controllers.VentasController import ventas_bp
-from App.controllers.ProveedorController import proveedor_bp
+from controllers.ProveedorController import proveedor_bp
 from controllers.ConfiguracionesController import configuraciones_bp
 from controllers.SucursalController import sucursal_bp
 

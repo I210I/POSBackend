@@ -1,4 +1,4 @@
-from App.models import db
+from models import db
 
 class Tienda(db.Model):
     __tablename__ = 'tienda'
