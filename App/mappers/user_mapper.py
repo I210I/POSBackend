@@ -1,5 +1,5 @@
 from entities.persona import Persona
-from models.user import UserModel
+from models.usuario import UsuarioModel
 
 def to_entity(model_data) -> Persona:
     return Persona(

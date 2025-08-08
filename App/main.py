@@ -9,8 +9,7 @@ from controllers.AutenticacionController import autenticacion_bp
 from controllers.ClienteController import cliente_bp
 from controllers.ProductosController import productos_bp
 from controllers.VentasController import ventas_bp
-from controllers.ProcesosController import procesos_bp
-from controllers.ProvedoresController import provedores_bp
+from App.controllers.ProveedorController import proveedor_bp
 from controllers.ConfiguracionesController import configuraciones_bp
 from controllers.SucursalController import sucursal_bp
 
@@ -64,8 +63,7 @@ app.register_blueprint(autenticacion_bp)
 app.register_blueprint(cliente_bp)
 app.register_blueprint(productos_bp)
 app.register_blueprint(ventas_bp)
-app.register_blueprint(procesos_bp)
-app.register_blueprint(provedores_bp)
+app.register_blueprint(proveedor_bp)
 app.register_blueprint(configuraciones_bp)
 app.register_blueprint(sucursal_bp)
 

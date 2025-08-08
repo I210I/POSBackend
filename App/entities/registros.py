@@ -1,11 +1,13 @@
+from models import db
 from datetime import datetime
 
-class Registros:
-    def __init__(self, id_registro: int = None, id_usuario: int = None, tipo: str = None, fecha: datetime = None):
-        self.id_registro = id_registro
-        self.id_usuario = id_usuario
-        self.tipo = tipo
-        self.fecha = fecha
+class Registros(db.Model):
+    __tablename__ = 'registros'
+
+    id_registro = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'), nullable=False, index=True)
+    tipo = db.Column(db.String(50), nullable=False)
+    fecha = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f'<Registros {self.id_registro} {self.tipo}>'

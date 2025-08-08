@@ -1,5 +1,4 @@
-
-from App.models import db
+from models import db
 from sqlalchemy.orm import relationship
 
 class Compra(db.Model):

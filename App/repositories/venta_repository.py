@@ -12,18 +12,26 @@ class VentaRepository:
 
     @staticmethod
     def agregar(venta: VentaEntity):
-        db.session.add(venta)
-        db.session.commit()
-        return venta.id_venta
+        try:
+            db.session.add(venta)
+            db.session.commit()
+            return venta.id_venta
+        except Exception as e:
+            db.session.rollback()
+            return None
 
     @staticmethod
     def eliminar(id_venta):
-        venta = VentaEntity.query.get(id_venta)
-        if venta:
-            db.session.delete(venta)
-            db.session.commit()
-            return True
-        return False
+        try:
+            venta = VentaEntity.query.get(id_venta)
+            if venta:
+                db.session.delete(venta)
+                db.session.commit()
+                return True
+            return False
+        except Exception as e:
+            db.session.rollback()
+            return False
 
     @staticmethod
     def get_ganancias_between_dates(start_date, end_date):

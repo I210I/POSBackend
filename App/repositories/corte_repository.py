@@ -21,6 +21,10 @@ class CorteRepository:
 
     @staticmethod
     def agregar_nuevo_corte(nuevo_corte: CorteEntity):
-        db.session.add(nuevo_corte)
-        db.session.commit()
-        return True
+        try:
+            db.session.add(nuevo_corte)
+            db.session.commit()
+            return True
+        except Exception as e:
+            db.session.rollback()
+            return False
